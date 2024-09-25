@@ -1,0 +1,45 @@
+## Unit 1 Exam - Program ##
+
+# define the number guess game "play_now" so it can be run inside magic_number and repeated #
+def play_now () :
+
+    from random import randrange
+
+
+    random_number = randrange(0, 100)
+
+    print ("Guess a number between 0 and 100 (integers only)")
+# define count #
+    count = 1
+# Make a while loop that will continue until either the user guesses #
+# the magic number or makes 10 incorrect guesses. #
+    while (guess := int(input("Your guess: "))) != random_number:
+        if guess < random_number:
+            print(f"Guess # {count}: Too low! You have {(10-(count))} guesses left" )
+            count += 1
+        if guess > random_number and guess < 100: 
+            print(f"Guess # {count}: Too high! You have {(10-(count))} guesses left" )
+            count += 1
+        if guess > 100:
+            print ("Invalid input. Number must be between 0 and 100. Please try again")
+        if count > 10:
+            print("No more tries. You lose!")
+            break
+# When the user gets the magic number right, the loop #
+# ends and they are told how many tries it took them  #    
+    print(f"The magic number is {random_number}. It took you {count} tries.")
+# play_now is running inside of magic_number so I had to define magic_number #
+def magic_number () :
+# The purpose of my guessing game is to guess the "magic number" to open a door. #
+    print("Guess the magic number to open the door. You only have 10 tries. Good luck!")
+    again = "y"
+# while loop to run play_now if user enters "y" #
+    while again.lower () == "y":
+        play_now ()
+        again = input ("Try again? (y/n):")
+# if the user doesn't enter "y" the loop breaks and prints "goodbye"
+    print ("Goodbye")
+# To start the game, start magic_number  #
+magic_number ()
+
+print("Completed by Laura Bartlett")
